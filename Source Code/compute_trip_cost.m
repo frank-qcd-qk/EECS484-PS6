@@ -1,5 +1,5 @@
 %for a given trip, compute the cost
-function [tripcost] = compute_trip_cost(V, costs)
+function [validity, tripcost] = compute_trip_cost(V, costs)
     %first, threshhold V's to get a definitive itinerary:
     temp = size(V);
     Ncities = temp(1);
@@ -36,6 +36,12 @@ function [tripcost] = compute_trip_cost(V, costs)
     tripcost = eval_soln(trip, costs)
     %check if this trip is valid:
     ndistinct = num_cities_visited(trip)
+
+    if ndistinct == 10
+        validity = true
+    else
+        validity = false
+    end
 
     if ndistinct ~= Ncities%valid tour
         tripcost = -tripcost;

@@ -43,7 +43,7 @@ function [U_dot, int_Eabc] = compute_udot(V, T, U, J, DT, LAMBDA, int_Eabc, Tabc
             %INTEGRAL ERROR TERM: ENABLE/DISABLE HERE
             %comment out the next line to eliminate the
             %integral-error term
-            %U_dot(X,ix) = U_dot(X,ix)+(LAMBDA)*int_Eabc(X,ix);
+            U_dot(X, ix) = U_dot(X, ix) + (LAMBDA) * int_Eabc(X, ix);
         end
 
     end
